@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <title></title>
+   <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+   <div id="registration" class="registration" class="registration-wrapper">
+      <h1 class="registration__title">Присоединяйтесь к крупнейшей платформе!</h1>
+      
+        <div class="user-type">
+         <div class="user-type-item" @click="companyActivate">
+            <div :class="this.companyActive ? 'user-type-item__title_active' : 'user-type-item__title'" >Компания</div>
+             <img src="/Rectangle 782.png" :class="this.companyActive ? 'user-type-item__img_active' : 'user-type-item__img'" ></img>
+             <div :class="this.companyActive ? 'user-type-item__promo_active' : 'user-type-item__promo'" >Продавать на Стройпортал</div>  
+         </div>
+         <div class="user-type-item" @click="specialistActivate()">
+            <div :class="this.specialistActive ? 'user-type-item__title_active' : 'user-type-item__title'">Частный специалист</div>
+             <img src="/Rectangle 782.png" :class="this.specialistActive ? 'user-type-item__img_active' : 'user-type-item__img'" ></img>
+             <div :class="this.specialistActive ? 'user-type-item__promo_active' : 'user-type-item__promo'">Получать заказы</div>  
+         </div>
+         <div class="user-type-item" @click="buyerActivate()">
+            <div :class="this.buyerActive ? 'user-type-item__title_active' : 'user-type-item__title'">Покупатель</div>
+             <img src="/Rectangle 782.png" :class="this.buyerActive ? 'user-type-item__img_active' : 'user-type-item__img'" ></img>
+             <div :class="this.buyerActive ? 'user-type-item__promo_active' : 'user-type-item__promo'">Низкие цены на сотни тысяч товаров</div>  
+         </div>
+        </div>
+
+        <form v-if="this.companyActive" class="registration__form" action="#">
+
+         <input v-if="companyStaps >= 1" data-tel-input v-model.trim="companyData.number" class="registration-input" placeholder="+7 (ХХХ) ХХХ ХХ ХХ" type="tel">
+         <input v-if="companyStaps >= 2"  v-model="companyData.inn"    class="registration-input" placeholder="XXXXXXXXXXXXXX" type="text">
+         <input v-if="companyStaps >= 3"  v-model="companyData.FIO"    class="registration-input" placeholder="ФИО" type="text">
+         <input v-if="companyStaps >= 4"  v-model="companyData.title"  class="registration-input" placeholder="Название" type="text">
+         <input v-if="companyStaps >= 5"  v-model="companyData.site"   class="registration-input" placeholder="https://" type="text">
+         <input v-if="companyStaps >= 6"  v-model="companyData.email"  class="registration-input" placeholder="email@email.ru" type="email">
+         <input v-if="companyStaps >= 7"  v-model="companyData.componyType" class="registration-input" placeholder="Выбрать из списка" type="text">
+         <input v-if="companyStaps >= 8"  v-model="companyData.password" class="registration-input" placeholder="" type="password">
+
+        </form>
+         
+      
+   </div>
+   <script src="reg.js"></script>
+</body>
+</html>
