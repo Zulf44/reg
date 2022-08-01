@@ -103,3 +103,35 @@ box-shadow: inset 2px 3px 6px rgba(172, 172, 172, 0.2);
 border-radius: 5px;
 padding: 12px 16px ;
 }
+
+option:hover { 
+   background-color: rgb(241, 155, 43);
+}
+
+.registration-input__submit { 
+
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: 9px 16px;
+
+
+   width: 200px;
+   height: 44px;
+
+   font-family: 'Arial';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 18px;
+   
+   color: #FFFFFF;
+   margin-top: 17px;
+   
+
+
+   background: #CF5A1D;
+   border-radius: 4px;
+   border: 0px solid #ffff
+}

@@ -15,7 +15,23 @@ const App = {
             email: null,
             componyType:null, 
             password:null, 
-         }
+         }, 
+         selected: null,
+         options: [
+           { text: 'Федеральный производитель', value: 'А' },
+           { text: 'Локальный производитель', value: 'Б' },
+           { text: 'Сетевой ритейлер', value: 'В' },
+           { text: 'Официальный', value: 'Б' },
+           { text: 'Розничный продавец, оффлайн', value: 'Б' },
+           { text: 'Розничный интернет-магазин', value: 'Б' },
+           { text: 'Генподрядчик', value: 'Б' },
+           { text: 'Крупная строительная компания', value: 'Б' },
+           { text: 'Небольшая строительная компания', value: 'Б' },
+           { text: 'Бригада', value: 'Б' },
+           { text: 'Частный мастер', value: 'Б' },
+           { text: 'Посредник, агент', value: 'Б' },
+           { text: 'Другое', value: 'Б' },
+         ]
       }
    },
    methods:{
@@ -36,16 +52,34 @@ const App = {
       },
    }, 
    watch: {
-      'companyData.number': function (n, o){
-         console.log(o)
-         if(n.length >= 11){ this.companyData.number = o }
-         if(n.length == 11){ this.companyStaps = 2;} 
-        
+      'companyData.number': function (n, old){
+         
          this.companyData.number = n.replace(/\s/g, '').replace(/[a-zа-яё]/gi, '')
+         if(n.length > 12){ this.companyData.number = old }
+         if(n.length == 11){ this.companyStaps = 2;} 
+         
+        
       },
-      'companyData.inn': function (n, o){
-         if(n.length == 10){ this.companyStaps = 3;} 
-      }
+      'companyData.inn': function (n, old){
+         if(n.length == 12){ this.companyStaps = 3;} 
+         if(n.length > 12){this.companyData.inn = old;} 
+      },
+      'companyData.FIO': function (n, old ){
+         this.companyData.FIO = n.replace(/\d/g, "");
+         if(n.length > 1){ this.companyStaps = 4;} 
+      },
+      'companyData.title': function (n, old ){
+         this.companyData.title = n.replace(/\d/g, "");
+         if(n.length > 1){ this.companyStaps = 5;} 
+      },
+      'companyData.site': function (n, old ){
+        
+         if(n.length > 1){ this.companyStaps = 6;} 
+      },
+      'companyData.email': function (n, old ){
+         
+         if(n.length > 1){ this.companyStaps = 7;} 
+      },
    }, 
    
    
